@@ -19,6 +19,7 @@ function App() {
     <>
       <center>
         <h1>Healthy Foods</h1>
+        {healthyFoods.length===0? <center><h3>No food items to display</h3></center> : null }
         <ol className="list-group list-group-numbered">
           {healthyFoods.map((item, index) => (
             <li key={index} className="list-group-item">
