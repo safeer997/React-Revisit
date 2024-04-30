@@ -13,7 +13,7 @@ function App() {
 
   
 
-  // let healthyFoods = [];
+//  let healthyFoods = [];
 
   return (
     <>
