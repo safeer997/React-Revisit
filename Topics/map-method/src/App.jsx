@@ -1,6 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FoodList from "./components/FoodList";
+import Container from "./components/Container";
 
 function App() {
   let healthyFoods = [
@@ -8,21 +9,21 @@ function App() {
     "Protein rich food",
     "Fiber rich food",
     "Sea food",
-    "carbs"
+    "carbs",
   ];
 
-  
-
-//  let healthyFoods = [];
+  //  let healthyFoods = [];
 
   return (
     <>
-      <center>
-        <h1>Healthy Foods</h1>
+      <Container>
+        <h1 className="healthyfood">Healthy Foods</h1>
         {healthyFoods.length === 0 && <h3>List is empty !</h3>}
-        <FoodList item={healthyFoods} ></FoodList>
-         {/* passing array as a prop */}
-      </center>
+        <FoodList item={healthyFoods}></FoodList>
+        {/* passing array as a prop */}
+      </Container>
+      <Container><p>Above is the list of healthy foods .</p></Container>
+     
     </>
   );
 }
