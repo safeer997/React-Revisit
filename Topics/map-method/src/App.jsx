@@ -6,15 +6,15 @@ import FoodInput from "./components/FoodInput";
 import { useState } from "react";
 
 function App() {
-  // let healthyFoods = [
-  //   "Green Vegetables",
-  //   "Protein rich food",
-  //   "Fiber rich food",
-  //   "Sea food",
-  //   "carbs",
-  // ];
+  let healthyFoods = [
+    "Green Vegetables",
+    "Protein rich food",
+    "Fiber rich food",
+    "Sea food",
+    "carbs",
+  ];
 
-  let [currentFoodArray, setcurrentFoodArray] = useState([]);
+  let [currentFoodArray, setcurrentFoodArray] = useState(healthyFoods);
   
 
   //  let healthyFoods = [];

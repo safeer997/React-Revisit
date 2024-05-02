@@ -1,8 +1,11 @@
+
 import styles from "./FoodItem.module.css";
-function FoodItem({ item,handleOnclickBuyButton }) {
+function FoodItem({ item, handleOnclickBuyButton,bought  }) {
+
   
+
   return (
-    <li className="list-group-item">
+    <li className={`list-group-item ${bought && 'active'}`}>
       {item}
       <button
         onClick={handleOnclickBuyButton}
