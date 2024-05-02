@@ -13,19 +13,27 @@ function App() {
     "carbs",
   ];
 
-  //  let healthyFoods = [];
+   let TextToShow = "food item entered by user!"
 
+  //  let healthyFoods = [];
+  const handleOnChange = (event) => {
+    console.log(event.target.value);
+    TextToShow=(event.target.value)
+  };
+
+ 
   return (
     <>
       <Container>
         <h1 className="healthyfood">Healthy Foods</h1>
         {healthyFoods.length === 0 && <h3>List is empty !</h3>}
-        <FoodInput></FoodInput>
+        <FoodInput handleOnChange={handleOnChange}></FoodInput>
+        <p>{TextToShow}</p>
+
         <FoodList item={healthyFoods}></FoodList>
         {/* passing array as a prop */}
       </Container>
       {/* <Container><p>Above is the list of healthy foods .</p></Container> */}
-     
     </>
   );
 }

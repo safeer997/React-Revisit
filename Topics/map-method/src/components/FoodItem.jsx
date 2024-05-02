@@ -1,13 +1,15 @@
 import styles from "./FoodItem.module.css";
-function FoodItem(props) {
-  const handleOnclickBuyButton = (event)=>{
-    console.log(event);
-    console.log(`${props.item} is being bought !`);
-  }
+function FoodItem({ item,handleOnclickBuyButton }) {
+  
   return (
     <li className="list-group-item">
-      {props.item}{" "}
-      <button onClick={handleOnclickBuyButton}  className={`${styles.button} btn btn-info`}>Buy</button>
+      {item}
+      <button
+        onClick={handleOnclickBuyButton}
+        className={`${styles.button} btn btn-info`}
+      >
+        Buy
+      </button>
     </li>
   );
 }

@@ -1,12 +1,15 @@
 import FoodItem from "./FoodItem";
 
-function FoodList(props) {
-
+function FoodList({item}) {
+  const handleOnclickBuyButton = (event) => {
+    console.log(event);
+    console.log(`${item} is being bought !`);
+  };
 
   return (
     <ul className="list-group">
-     {props.item.map((eachFood,index)=>{
-      return (<FoodItem key={index} item={eachFood}></FoodItem>)
+     {item.map((eachFood,index)=>{
+      return (<FoodItem handleOnclickBuyButton={handleOnclickBuyButton} key={index} item={eachFood}></FoodItem>)
      })}
     </ul>
   );
