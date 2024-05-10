@@ -7,45 +7,36 @@ import { useState } from "react";
 import WelcomeMsg from "./components/WelcomeMsg";
 
 function App() {
-  // const intitiaTodoitems = [
-  //   {
-  //     name: "Learn react",
-  //     dueDate: "24/12/24",
-  //   },
-  //   {
-  //     name: "Make Projects",
-  //     dueDate: "01/01/25",
-  //   },
-  //   {
-  //     name: "Make Projects with MERN",
-  //     dueDate: "15/01/25",
-  //   },
-  // ];
+  const [todoItems, setTodoItems] = useState([]);
 
-  const [todoItems,setTodoItems] = useState([]);
-
-  const handlenewItems = (itemName,itemDueDate)=>{
+  const handlenewItems = (itemName, itemDueDate) => {
     // console.log(`item name :${itemName} Date:${itemDueDate}` );
-    const newtodoItems =[...todoItems,{
-      name: itemName,
-      dueDate: itemDueDate,
-    },]
-    setTodoItems(newtodoItems)
-  } 
+    const newtodoItems = [
+      ...todoItems,
+      {
+        name: itemName,
+        dueDate: itemDueDate,
+      },
+    ];
+    setTodoItems(newtodoItems);
+  };
 
-  const handleDeleteItem = (todoItem) =>{
-      const newtodoItems = todoItems.filter((item)=>item.name!==todoItem )
-      setTodoItems(newtodoItems)
-  }
+  const handleDeleteItem = (todoItem) => {
+    const newtodoItems = todoItems.filter((item) => item.name !== todoItem);
+    setTodoItems(newtodoItems);
+  };
 
-  return (  
+  return (
     <>
       <center className="todo-container">
         <AppName></AppName>
         <AddTodo handleNewItems={handlenewItems}></AddTodo>
-        {todoItems.length===0 && <WelcomeMsg></WelcomeMsg>}
+        {todoItems.length === 0 && <WelcomeMsg></WelcomeMsg>}
         <div className="items-container">
-          <Todoitem1 handleDeleteItem={handleDeleteItem} passasArray={todoItems}></Todoitem1>
+          <Todoitem1
+            handleDeleteItem={handleDeleteItem}
+            passasArray={todoItems}
+          ></Todoitem1>
         </div>
       </center>
     </>

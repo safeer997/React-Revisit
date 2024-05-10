@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { MdOutlineNoteAdd } from "react-icons/md";
 
 function AddTodo({ handleNewItems }) {
-  const [todoName, setTodoName] = useState();
-  const [duedate, setDuedate] = useState();
+  const [todoName, setTodoName] = useState("");
+  const [duedate, setDuedate] = useState("");
 
   const handleOnNameChange = (event) => {
     setTodoName(event.target.value);
@@ -11,35 +12,42 @@ function AddTodo({ handleNewItems }) {
     setDuedate(event.target.value);
   };
 
-  const   handleAddButtonclicked = () => {
-    handleNewItems(todoName, duedate);
+  const handleAddButtonclicked = (event) => {
+    
+    event.preventDefault();
+    // console.log(event);
+    handleNewItems(todoName, duedate); 
     setTodoName("");
     setDuedate("");
   };
 
   return (
     <div className="container text-center">
-      <div className="row safeer-row">
-        <div className="col-6">
-          <input
-            type="text"
-            placeholder="Enter todo here!"
-            onChange={handleOnNameChange}
-          />
+      <form onSubmit={handleAddButtonclicked}>
+        <div className="row safeer-row">
+          <div className="col-6">
+            <input
+              type="text"
+              value={todoName}
+              placeholder="Enter todo here!"
+              onChange={handleOnNameChange} 
+            />
+          </div>
+          <div className="col-4">
+            <input value={duedate} type="date" onChange={handleOnDateChange} />
+          </div>
+          <div className="col-2">
+            <button
+              type="submit"
+              onSubmit={handleAddButtonclicked}
+              className="btn btn-success safeer-button"
+            >
+              {/* Add */}
+              <MdOutlineNoteAdd />
+            </button>
+          </div>
         </div>
-        <div className="col-4">
-          <input type="date" onChange={handleOnDateChange} />
-        </div>
-        <div className="col-2">
-          <button
-            type="button"
-            className="btn btn-success safeer-button"
-            onClick={handleAddButtonclicked}
-          >
-            Add
-          </button>
-        </div>
-      </div>
+      </form>
     </div>
   );
 }
