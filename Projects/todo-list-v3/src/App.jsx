@@ -1,7 +1,6 @@
 import AppName from "./components/AppName";
 import AddTodo from "./components/AddTodo";
 import Todoitem1 from "./components/Todoitems";
-
 import "./App.css";
 import { useState } from "react";
 import WelcomeMsg from "./components/WelcomeMsg";
@@ -11,14 +10,17 @@ function App() {
 
   const handlenewItems = (itemName, itemDueDate) => {
     // console.log(`item name :${itemName} Date:${itemDueDate}` );
-    const newtodoItems = [
-      ...todoItems,
-      {
-        name: itemName,
-        dueDate: itemDueDate,
-      },
-    ];
-    setTodoItems(newtodoItems);
+
+    setTodoItems((currentValue) => {
+      const newtodoItems = [
+        ...currentValue,
+        {
+          name: itemName,
+          dueDate: itemDueDate,
+        },
+      ];
+      return newtodoItems;
+    });
   };
 
   const handleDeleteItem = (todoItem) => {
