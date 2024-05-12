@@ -4,11 +4,12 @@ import Todoitem1 from "./components/Todoitems";
 import "./App.css";
 import { useState } from "react";
 import WelcomeMsg from "./components/WelcomeMsg";
+import { TodoItemsContext } from "./store/Todo-items-store";
 
 function App() {
   const [todoItems, setTodoItems] = useState([]);
 
-  const handlenewItems = (itemName, itemDueDate) => {
+  const handleNewItems = (itemName, itemDueDate) => {
     // console.log(`item name :${itemName} Date:${itemDueDate}` );
 
     setTodoItems((currentValue) => {
@@ -30,17 +31,22 @@ function App() {
 
   return (
     <>
-      <center className="todo-container">
-        <AppName></AppName>
-        <AddTodo handleNewItems={handlenewItems}></AddTodo>
-        {todoItems.length === 0 && <WelcomeMsg></WelcomeMsg>}
-        <div className="items-container">
-          <Todoitem1
-            handleDeleteItem={handleDeleteItem}
-            passasArray={todoItems}
-          ></Todoitem1>
-        </div>
-      </center>
+      <TodoItemsContext.Provider
+        value={{
+          todoItems,
+          handleDeleteItem,
+          handleNewItems,
+        }}
+      >
+        <center className="todo-container">
+          <AppName></AppName>
+          <AddTodo></AddTodo>
+          <WelcomeMsg></WelcomeMsg>
+          <div className="items-container">
+            <Todoitem1></Todoitem1>
+          </div>
+        </center>
+      </TodoItemsContext.Provider>
     </>
   );
 }

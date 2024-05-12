@@ -1,9 +1,12 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { MdOutlineNoteAdd } from "react-icons/md";
+import { TodoItemsContext } from "../store/Todo-items-store";
 
-function AddTodo({ handleNewItems }) {
+function AddTodo() {
   const todoNameElement = useRef();
   const dueDateElement = useRef();
+
+  const { handleNewItems } = useContext(TodoItemsContext);
 
   const handleAddButtonclicked = (event) => {
     event.preventDefault();
