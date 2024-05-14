@@ -33,7 +33,7 @@ const todoItemsReducer = (currentState, action) => {
 };
 
 
-const TodoItemsContextProvider = ({children}) => {
+const SeparateBusinessLogic = ({children}) => {
   const [todoItems, dispatchTodoItems] = useReducer(todoItemsReducer, []);
 
   const handleNewItems = (itemName, itemDueDate) => {
@@ -70,4 +70,4 @@ const TodoItemsContextProvider = ({children}) => {
     </TodoItemsContext.Provider>
   );
 };
-export default TodoItemsContextProvider;
+export default SeparateBusinessLogic;
