@@ -1,4 +1,4 @@
-import   { useRef } from "react";
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
 const Control = () => {
@@ -13,7 +13,7 @@ const Control = () => {
   };
 
   const handlePrivacy = () => {
-    dispatch({ type: "SUBSTRACT", payload: {} });
+    dispatch({ type: "PRIVACY", payload: {} });
   };
 
   const inputElement = useRef();
@@ -25,8 +25,8 @@ const Control = () => {
         number: Number(inputElement.current.value),
       },
     });
-    
-    inputElement.current.value=null;
+
+    inputElement.current.value = null;
   };
 
   return (
@@ -35,7 +35,11 @@ const Control = () => {
         Add
       </button>
 
-      <button onClick={handleSubstract} type="button" className="btn btn-success">
+      <button
+        onClick={handleSubstract}
+        type="button"
+        className="btn btn-success"
+      >
         Substarct
       </button>
 
