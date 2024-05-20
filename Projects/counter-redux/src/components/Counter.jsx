@@ -1,8 +1,8 @@
-
 import { useSelector } from "react-redux";
 
 const Counter = () => {
-  const counter = useSelector((store) => store.counterValue);
+  const counterObj = useSelector((store) => store.counter);
+  const counter = counterObj.counterValue;
 
   return (
     <div className="col-lg-6 mx-auto">

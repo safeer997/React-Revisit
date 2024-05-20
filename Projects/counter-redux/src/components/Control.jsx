@@ -1,31 +1,27 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
+import { privacySliceActions, sliceActions } from "../store";
 
 const Control = () => {
   const dispatch = useDispatch();
 
   const handleAdd = () => {
-    dispatch({ type: "ADD", payload: {} });
+    dispatch(sliceActions.increment());
   };
 
   const handleSubstract = () => {
-    dispatch({ type: "SUBSTRACT", payload: {} });
+    dispatch(sliceActions.decrement());
   };
 
   const handlePrivacy = () => {
-    dispatch({ type: "PRIVACY", payload: {} });
+   dispatch(privacySliceActions.toggle())
   };
 
   const inputElement = useRef();
 
   const handleInput = () => {
-    dispatch({
-      type: "INPUT_NUMBER",
-      payload: {
-        number: Number(inputElement.current.value),
-      },
-    });
-
+    const number = Number(inputElement.current.value);
+    dispatch(sliceActions.add_input(number));
     inputElement.current.value = null;
   };
 
@@ -40,7 +36,7 @@ const Control = () => {
         type="button"
         className="btn btn-success"
       >
-        Substarct
+        Substract
       </button>
 
       <button onClick={handlePrivacy} type="button" className="btn btn-success">
